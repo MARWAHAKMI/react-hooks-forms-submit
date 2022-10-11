@@ -12,8 +12,14 @@ function Form(props) {
     setLastName(event.target.value);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const fullName = `${firstName} ${lastName}`;
+    props.onSubmit(fullName);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input type="text" onChange={handleFirstNameChange} value={firstName} />
       <input type="text" onChange={handleLastNameChange} value={lastName} />
       <button type="submit">Submit</button>
